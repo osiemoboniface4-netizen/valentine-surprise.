@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sophie ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+    color:white;
+    position:relative;
+}
+
+/* Background Image */
+body::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: 
+        linear-gradient(135deg,#ff758c,#ff7eb3),
+        url("sophie 2.jpeg");
+    background-size:50;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-blend-mode:overlay;
+    opacity:0.9;   /* change this to control image visibility */
+    z-index:-1;
+    
+}
+
+
+.container{
+    width:90%;
+    max-width:600px;
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.3s;
+}
+
+.primary{
+    background:white;
+    color:#ff4d6d;
+}
+
+.primary:hover{
+    transform:scale(1.1);
+}
+
+#noBtn{
+    background:#ff1744;
+    color:white;
+    position:absolute;
+}
+
+.hidden{
+    display:none;
+}
+
+.fade{
+    animation:fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+#letter{
+    font-size:18px;
+    min-height:120px;
+    margin-bottom:20px;
+}
+
+.heart{
+    font-size:50px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- PAGE 1 -->
+<div id="page1" class="fade">
+    <h1>Sophie ❤️</h1>
+    <p>You have something waiting for you...</p>
+    <br>
+    <button class="primary" onclick="nextPage()">Open My Heart 💌</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="hidden">
+    <h1>My Dearest Sophie,</h1>
+    <p id="letter"></p>
+
+    <h2>Will you be my Valentine? 💘</h2>
+
+    <button class="primary" onclick="yesAnswer()">YES ❤️</button>
+    <button id="noBtn" onmouseover="moveNo()">NO 😏</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div id="finalPage" class="hidden">
+    <div class="heart">❤️</div>
+    <h1>You just made me the happiest man alive.</h1>
+    <p>I promise to cherish you today, tomorrow and always.</p>
+    <p>I love you beiby ❤️.</p>
+</div>
+
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="Juice_WRLD_-_I_Need_You_Ft._The_Kid_Laroi___Don_Toliver__Prod_Ringtone.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const message = `Sophie...
+
+If love had a face,
+it would look like you.
+
+If peace had a voice,
+it would sound like your laughter.
+
+Before you,
+life was just days passing by.
+But with you,
+every moment feels meaningful.
+
+You are not just someone I love —
+you are the calm in my chaos,
+the warmth in my cold nights,
+the light that makes everything clear.
+
+When I look at you,
+I don’t just see beauty...
+I see my future.
+
+And if I had to choose
+a thousand times,
+in a thousand lifetimes —
+
+I would still choose you.
+
+Every. Single. Time. ❤️`;
+
+let i = 0;
+let speed = 50;
+
+function typeWriter(){
+    if(i < message.length){
+        document.getElementById("letter").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+function nextPage(){
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+    document.getElementById("bgMusic").play();
+    typeWriter();
+}
+
+function yesAnswer(){
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("finalPage").classList.remove("hidden");
+}
+
+function moveNo(){
+    const noBtn = document.getElementById("noBtn");
+    noBtn.style.top = Math.random() * window.innerHeight + "px";
+    noBtn.style.left = Math.random() * window.innerWidth + "px";
+}
+
+</script>
+
+
+</body>
+</html>
